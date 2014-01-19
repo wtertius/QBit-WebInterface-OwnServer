@@ -1,3 +1,9 @@
+libqbit-webinterface-ownserver-perl (0.002) saucy; urgency=low
+
+  * Fixed port argument
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Sun, 19 Jan 2014 16:35:02 +0400
+
 libqbit-webinterface-ownserver-perl (0.001) saucy; urgency=low
 
   * Initial commit
