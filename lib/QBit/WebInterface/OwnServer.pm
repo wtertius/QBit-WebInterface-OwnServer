@@ -6,9 +6,31 @@ use base qw(QBit::WebInterface);
 
 use IO::Socket;
 use MIME::Types;
+use URI::Escape qw(uri_escape_utf8);
 
 use QBit::WebInterface::OwnServer::Request;
 use QBit::WebInterface::Response;
+
+my %RESPONSE_TEXT = (
+    200 => 'OK',
+    201 => 'CREATED',
+    202 => 'Accepted',
+    203 => 'Partial Information',
+    204 => 'No Response',
+    301 => 'Moved',
+    302 => 'Found',
+    303 => 'Method',
+    304 => 'Not Modified',
+    400 => 'Bad request',
+    401 => 'Unauthorized',
+    402 => 'PaymentRequired',
+    403 => 'Forbidden',
+    404 => 'Not found',
+    500 => 'Internal Error',
+    501 => 'Not implemented',
+    502 => 'Service temporarily overloaded',
+    503 => 'Gateway timeout',
+);
 
 sub run {
     my ($self, %opts) = @_;
@@ -60,7 +82,10 @@ sub run {
         };
 
         binmode($socket);
-        print $socket 'HTTP/1.0 ' . ($self->response->status || 200) . " Status\n";
+
+        my $status = $self->response->status || 200;
+
+        print $socket 'HTTP/1.0 ' . (exists($RESPONSE_TEXT{$status}) ? " $RESPONSE_TEXT{$status}" : 'Unknown') . "\n";
         print $socket 'Server: QBit::WebInterface::OwnServer (' . ref($self) . ")\n";
         print $socket 'Set-Cookie: ' . $_->as_string() . "\n" foreach values(%{$self->response->cookies});
 
