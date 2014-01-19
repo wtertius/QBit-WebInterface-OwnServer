@@ -20,8 +20,8 @@ $class_fname =~ s/::/\//g;
 $class_fname .= '.pm';
 require $class_fname;
 
-my $web_interface = $ARGV[0]->new(%args);
-$web_interface->run();
+my $web_interface = $ARGV[0]->new();
+$web_interface->run(port => $args{'port'});
 
 __END__
 
