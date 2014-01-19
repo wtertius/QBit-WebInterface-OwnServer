@@ -1,3 +1,9 @@
+libqbit-webinterface-ownserver-perl (0.003) saucy; urgency=low
+
+  * Fixed uri_escape_utf8 error, added text respomse code
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Sun, 19 Jan 2014 17:14:53 +0400
+
 libqbit-webinterface-ownserver-perl (0.002) saucy; urgency=low
 
   * Fixed port argument
