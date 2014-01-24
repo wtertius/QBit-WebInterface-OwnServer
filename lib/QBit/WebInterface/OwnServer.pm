@@ -85,7 +85,8 @@ sub run {
 
         my $status = $self->response->status || 200;
 
-        print $socket 'HTTP/1.0 ' . (exists($RESPONSE_TEXT{$status}) ? " $RESPONSE_TEXT{$status}" : 'Unknown') . "\n";
+        print $socket "HTTP/1.0 $status "
+          . (exists($RESPONSE_TEXT{$status}) ? " $RESPONSE_TEXT{$status}" : 'Unknown') . "\n";
         print $socket 'Server: QBit::WebInterface::OwnServer (' . ref($self) . ")\n";
         print $socket 'Set-Cookie: ' . $_->as_string() . "\n" foreach values(%{$self->response->cookies});
 
@@ -93,19 +94,19 @@ sub run {
             print $socket "$key: $value\n";
         }
 
-        if (!$self->response->status || $self->response->status == 200) {
+        if ($status == 200) {
             print $socket 'Content-Type: ' . $self->response->content_type . "\n\n";
             print $socket 'Content-Disposition: '
               . 'attachment; filename="'
               . $self->_escape_filename($self->response->filename) . '"'
               if $self->response->filename;
             print $socket ref($self->response->data) ? ${$self->response->data} : $self->response->data;
-        } elsif ($self->response->status == 301 || $self->response->status == 302) {
+        } elsif ($status == 301 || $status == 302) {
             print $socket 'Location: ' . $self->response->location . "\n\n";
-        } elsif ($self->response->status == 404) {
+        } elsif ($status == 404) {
             print $socket "Content-Type: text/html\n\n";
             print $socket '<html><body><h1>Not found</h1><body></html>';
-        } elsif ($self->response->status == 500) {
+        } elsif ($status == 500) {
             print $socket "Content-Type: text/html\n\n";
             print $socket '<html><body><h1>Internal server error</h1><body></html>';
         } else {
