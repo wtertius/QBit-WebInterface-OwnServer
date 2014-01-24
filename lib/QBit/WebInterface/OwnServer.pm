@@ -100,7 +100,13 @@ sub run {
               . 'attachment; filename="'
               . $self->_escape_filename($self->response->filename) . '"'
               if $self->response->filename;
-            print $socket ref($self->response->data) ? ${$self->response->data} : $self->response->data;
+
+            if (defined($self->response->data)) {
+                my $data_ref = ref($self->response->data) ? $self->response->data : \$self->response->data;
+                utf8::encode($$data_ref) if utf8::is_utf8($$data_ref);
+                print $socket $$data_ref;
+            }
+
         } elsif ($status == 301 || $status == 302) {
             print $socket 'Location: ' . $self->response->location . "\n\n";
         } elsif ($status == 404) {
