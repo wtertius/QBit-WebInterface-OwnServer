@@ -68,7 +68,13 @@ sub query_string {shift->{'query_string'}}
 sub _read_from_stdin {
     my ($self, $buffer_ref, $size) = @_;
 
-    return read($self->socket, $$buffer_ref, $size);
+    $self->{'__CAN_READ_BYTES__'} = $self->http_header('CONTENT_LENGTH') unless exists($self->{'__CAN_READ_BYTES__'});
+    $size = $self->{'__CAN_READ_BYTES__'} if $size > $self->{'__CAN_READ_BYTES__'};
+
+    my $readed = read($self->socket, $$buffer_ref, $size);
+    $self->{'__CAN_READ_BYTES__'} -= $readed;
+
+    return $readed;
 }
 
 TRUE;
