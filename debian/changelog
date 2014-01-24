@@ -1,3 +1,9 @@
+libqbit-webinterface-ownserver-perl (0.004) saucy; urgency=low
+
+  * Fixed statuses
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Fri, 24 Jan 2014 15:10:55 +0400
+
 libqbit-webinterface-ownserver-perl (0.003) saucy; urgency=low
 
   * Fixed uri_escape_utf8 error, added text respomse code
