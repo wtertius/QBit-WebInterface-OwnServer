@@ -1,3 +1,9 @@
+libqbit-webinterface-ownserver-perl (0.005) saucy; urgency=low
+
+  * Fixed POST
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Fri, 24 Jan 2014 16:31:41 +0400
+
 libqbit-webinterface-ownserver-perl (0.004) saucy; urgency=low
 
   * Fixed statuses
