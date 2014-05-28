@@ -20,7 +20,7 @@ sub init {
     $request_str = '' unless defined($request_str);
     $request_str =~ s/$CHOMP_QR//;
 
-    if ($request_str =~ /^(GET|POST)\s+(.+?)\s+HTTP\/1\.[01]$/) {
+    if ($request_str =~ /^(GET|POST|HEAD)\s+(.+?)\s+HTTP\/1\.[01]$/) {
         $self->{'method'} = $1;
         $self->{'uri'}    = $2;
     } else {
