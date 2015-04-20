@@ -1,12 +1,12 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: libqbit-webinterface-ownserver-perl
+Upstream-Name: libtertiusqbit-webinterface-ownserver-perl
 
 Files: *
-Copyright: 2014 Sergei Svistunov <sergei-svistunov@yandex.ru>
+Copyright: 2014 Dmitry Lukiyanchuk <wtertius@gmail.com>
 License: GPL-2.0+
 
 Files: debian/*
-Copyright: 2014 Sergei Svistunov <sergei-svistunov@yandex.ru>
+Copyright: 2014 Dmitry Lukiyanchuk <wtertius@gmail.com>
 License: GPL-2.0+
 
 License: GPL-2.0+

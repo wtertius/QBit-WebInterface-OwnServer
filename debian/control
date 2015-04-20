@@ -1,11 +1,13 @@
-Source: libqbit-webinterface-ownserver-perl
+Source: libtertiusqbit-webinterface-ownserver-perl
 Section: perl
 Priority: extra
-Maintainer: Sergei Svistunov <sergei-svistunov@yandex.ru>
-Build-Depends: debhelper (>= 8.0.0), perl, libqbit-perl, libqbit-webinterface-perl, libqbit-webinterface-perl, libmime-types-perl
+Maintainer: Dmitry Lukiyanchuk <wtertius@gmail.com>
+Build-Depends: debhelper (>= 8.0.0), perl, libtertiusqbit-perl, libtertiusqbit-webinterface-perl, libtertiusqbit-webinterface-perl, libmime-types-perl
 Standards-Version: 3.9.4
 
-Package: libqbit-webinterface-ownserver-perl
+Package: libtertiusqbit-webinterface-ownserver-perl
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}, perl, libqbit-perl, libqbit-webinterface-perl, libqbit-webinterface-perl, libmime-types-perl
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}, perl, libtertiusqbit-perl, libtertiusqbit-webinterface-perl, libtertiusqbit-webinterface-perl, libmime-types-perl
+Conflicts: libqbit-webinterface-ownserver-perl
+Replaces: libqbit-webinterface-ownserver-perl
 Description: WebInterface with own HTTP server.
